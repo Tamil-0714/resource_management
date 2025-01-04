@@ -1,0 +1,189 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.users-top-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0 20px;
+}
+.users-container {
+  height: calc(100vh - 50px);
+  width: 100%;
+}
+.details-group-example sl-details:not(:last-of-type) {
+  margin-bottom: var(--sl-spacing-2x-small);
+}
+.details-group-example {
+  width: 35%;
+}
+.students-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.student-container {
+  /* outline: 1px solid red; */
+
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.name-other-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.request-info-box {
+  width: 600px;
+  height: 400px;
+  border: 1px solid rgb(82, 82, 82);
+  background-color: var(--sl-color-neutral-200);
+  border-radius: 14px;
+  overflow-y: auto;
+  padding-bottom: 10px;
+  position: relative;
+}
+.box-close-icon {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+#logout-button {
+  cursor: pointer;
+  position: absolute;
+  top: 4px;
+  right: 10px;
+  padding: 12px;
+}
+.full-box-container {
+  display: flex;
+  margin-top: 7px;
+}
+.left-box-container {
+  outline: 1px solid rgb(231, 231, 231);
+  display: flex;
+  border-radius: 8px;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 79%;
+  margin-left: 1%;
+  padding: 0 7px;
+  height: 100px;
+}
+.right-box-container {
+  outline: 1px solid rgb(255, 255, 255);
+  display: flex;
+  border-radius: 8px;
+  width: 19%;
+  margin-right: 1%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.right-box-container button {
+  padding: 8px;
+  font-size: 1.06rem;
+  cursor: pointer;
+}
+
+.right-top-container button {
+  background-color: green;
+  border: none;
+}
+.right-top-container button:hover {
+  background-color: hsl(110, 80%, 25%);
+  border: none;
+}
+
+.new-user-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.new-user-wrapper {
+  display: flex;
+  gap: 20px;
+}
+#addNewUser,
+#addNewFaculty {
+  width: 100%;
+  outline: 1px solid;
+  border-radius: 8px;
+  padding: 12px;
+}
+.label-wrapper {
+  display: flex;
+  margin: 10px 0;
+  gap: 10px;
+  justify-content: space-between;
+}
+.label-wrapper label {
+  font-size: 1.1em;
+  align-self: center;
+}
+.label-wrapper input {
+  padding: 8px;
+  font-size: 1.1em;
+}
+.submit-btn,
+.fac-submit-btn {
+  padding: 8px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+.form-button-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.container {
+  max-width: 1600px;
+  height: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  display: flex;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  gap: 2%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.student-wrapper, .faculty-wrapper{
+  padding: 12px;
+  width: 48%;
+}
+
+
+h2 {
+  color: #00c8ff;
+  border-bottom: 1px solid #444;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+.booking-items {
+  /* outline: 1px solid red; */
+  overflow-x: auto;
+  height: 96%;
+}
+.booking-item {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #2a2a2a;
+  border-radius: 5px;
+}
+.booking-item strong {
+  color: rgb(0, 217, 255);
+}
+
+.booking-item p {
+  margin: 5px 0;
+  line-height: 1.6;
+}
+
+.no-data {
+  color: #888;
+  font-style: italic;
+}

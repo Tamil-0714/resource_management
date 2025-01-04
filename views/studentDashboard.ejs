@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="/studentStyle.css" />
+  </head>
+  <body>
+    <nav>
+      <button id="logout-button">Logout</button>
+    </nav>
+    <main>
+      <div class="profile-container" style="margin-left: 30px">
+        <h1>Your Profile</h1>
+        <table>
+          <tr>
+            <td>ID</td>
+            <td><%= profile[0].student_id %></td>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td><%= profile[0].student_name %></td>
+          </tr>
+        </table>
+        <br /><br />
+        <div class="old-req-wrapper">
+          <h1>Your bookings</h1>
+          <div class="booked-container">
+            <div class="student-wrapper">
+              <div class="booking-items">
+                <% const studentBookings = bookedDetails.filter(b =>
+                b.student_id); %> <% if (studentBookings.length > 0) { %> <%
+                studentBookings.forEach(booking => { %>
+                <div class="booking-item">
+                  <p>
+                    <strong>Student ID:</strong> <%=
+                    booking.student_id.toUpperCase() %>
+                  </p>
+                  <p>
+                    <strong>Resource Name:</strong> <%= booking.resource_name %>
+                  </p>
+                  <p>
+                    <strong>Booked Date:</strong> <%= booking.request_date %>
+                  </p>
+                  <p>
+                    <strong>Description:</strong> <%= booking.description %>
+                  </p>
+                  <p>
+                    <strong>Status:</strong><span class="<%= statusClassMap[booking.status] %>"> <%= booking.status %> </span>
+                  </p>
+                </div>
+                <% }) %> <% } else { %>
+                <p class="no-data">No student bookings found.</p>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <h1>Book Your Request</h1>
+        <form id="bookingForm" action="/studnet/bookResourse" method="POST">
+          <div class="form-group">
+            <label for="resource">Resource Name</label>
+            <select id="resource" name="resource_name" required>
+              <% resources.forEach(function(item) { %>
+              <option value="<%= item.resource_id %>">
+                <%= item.resource_name %>
+              </option>
+              <% }) %>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="requestDate">Request Date</label>
+            <input type="date" id="requestDate" name="request_date" required />
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea
+              id="description"
+              name="description"
+              placeholder="Provide details about your booking..."
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn">Request Booking</button>
+        </form>
+      </div>
+    </main>
+    <script src="/studentScript.js"></script>
+  </body>
+</html>

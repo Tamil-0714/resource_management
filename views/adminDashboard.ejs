@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" class="sl-theme-dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resourse manaagment</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.19.0/cdn/themes/light.css"
+    />
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.19.0/cdn/shoelace-autoloader.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.19.0/cdn/themes/dark.css"
+    />
+    <link rel="stylesheet" href="/adminStyle.css" />
+  </head>
+  <body>
+    <sl-tab-group placement="top">
+      <sl-tab slot="nav" panel="users">Users</sl-tab>
+      <sl-tab slot="nav" panel="resourceMG">Booking Histroy</sl-tab>
+      <sl-tab slot="nav" panel="requestOS">Request Oversight</sl-tab>
+      <sl-tab slot="nav" panel="NotificationSYS">Notification System</sl-tab>
+
+      <sl-tab slot="nav" panel="logout"
+        ><button id="logout-button">Logout</button></sl-tab
+      >
+
+      <sl-tab-panel name="users" class="users-container">
+        <div class="users-top-container">
+          <div class="details-group-example">
+            <sl-details summary="Student Resource Requests">
+              <div class="students-container">
+                <div class="request-info-wrapper">
+                  <div class="box request-info-box">
+                    <div
+                      class="div-hidder"
+                      style="height: 30px; width: 100%"
+                    ></div>
+                    <% bookingDetails.forEach(e => { %>
+                    <div
+                      class="full-box-container"
+                      data-reqStdId="<%= e.student_id %>"
+                      data-reqId="<%= e.booking_id %>"
+                    >
+                      <div class="left-box-container">
+                        <div class="left-top-container">
+                          <h3>
+                            <span style="color: rgb(0, 217, 255)">
+                              <%= e.student_id %></span
+                            >, <%= e.resource_name %> - <%= e.request_date %>
+                          </h3>
+                        </div>
+                        <div class="left-bottom-container">
+                          <p><%= e.description %></p>
+                        </div>
+                      </div>
+                      <div class="right-box-container">
+                        <div class="right-top-container">
+                          <button
+                            class="approve-request"
+                            data-reqId="<%= e.booking_id %>"
+                          >
+                            Approve
+                          </button>
+                        </div>
+                        <div class="right-bottom-container">
+                          <button
+                            class="reject-request"
+                            data-reqId="<%= e.booking_id %>"
+                          >
+                            Reject
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <% }); %>
+                  </div>
+                </div>
+              </div>
+            </sl-details>
+
+            <sl-details summary="Faculty Resource Requests"
+              ><div class="students-container">
+                <div class="request-info-wrapper">
+                  <div class="box request-info-box">
+                    <div
+                      class="div-hidder"
+                      style="height: 30px; width: 100%"
+                    ></div>
+                    <% facBookingDetaild.forEach(e => { %>
+                    <div
+                      class="full-box-container"
+                      data-reqStdId="<%= e.faculty_id %>"
+                      data-reqId="<%= e.booking_id %>"
+                    >
+                      <div class="left-box-container">
+                        <div class="left-top-container">
+                          <h3> <span style="color: rgb(0, 217, 255)">
+                            <%= e.faculty_id %></span>, <%= e.resource_name %> - <%=
+                            e.request_date %>
+                          </h3>
+                        </div>
+                        <div class="left-bottom-container">
+                          <p style="font-size: 1.1rem;"><%= e.description %></p>
+                        </div>
+                      </div>
+                      <div class="right-box-container">
+                        <div class="right-top-container">
+                          <button
+                            class="approve-request"
+                            data-reqId="<%= e.booking_id %>"
+                          >
+                            Approve
+                          </button>
+                        </div>
+                        <div class="right-bottom-container">
+                          <button
+                            class="reject-request"
+                            data-reqId="<%= e.booking_id %>"
+                          >
+                            Reject
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <% }); %>
+                  </div>
+                </div>
+              </div>
+            </sl-details>
+          </div>
+          <div class="new-user-wrapper">
+            <div class="new-user-container">
+              <form action="#" id="addNewUser">
+                <center><h3>New student Registration</h3></center>
+                <div class="labels-wrapper">
+                  <div class="label-wrapper">
+                    <label for="sName" class="stdName">Name</label>
+                    <input type="text" id="sName" autocomplete="off" />
+                  </div>
+                  <div class="label-wrapper">
+                    <label for="sid" class="stdId">Id</label>
+                    <input type="text" id="sid" autocomplete="off" />
+                  </div>
+                  <div class="label-wrapper">
+                    <label for="sPass" class="stdPass">Password</label>
+                    <input type="password" id="sPass" />
+                  </div>
+                </div>
+                <div class="form-button-wrapper">
+                  <button class="submit-btn">Add Student</button>
+                </div>
+              </form>
+            </div>
+
+            <div class="new-user-container">
+              <form action="#" id="addNewFaculty">
+                <center><h3>New Faculty Registration</h3></center>
+                <div class="labels-wrapper">
+                  <div class="label-wrapper">
+                    <label for="fName" class="facName">Name</label>
+                    <input type="text" id="fName" autocomplete="off" />
+                  </div>
+                  <div class="label-wrapper">
+                    <label for="fid" class="facId">Id</label>
+                    <input type="text" id="fid" autocomplete="off" />
+                  </div>
+                  <div class="label-wrapper">
+                    <label for="fPass" class="facPass">Password</label>
+                    <input type="password" id="fPass" />
+                  </div>
+                </div>
+                <div class="form-button-wrapper">
+                  <button class="fac-submit-btn">Add Faculty</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </sl-tab-panel>
+
+      <sl-tab-panel name="resourceMG">
+        <div class="container">
+          <div class="student-wrapper">
+            <h2>Student Bookings</h2>
+            <div class="booking-items">
+              <% const studentBookings = bookedDetails.filter(b =>
+              b.student_id); %> <% if (studentBookings.length > 0) { %> <%
+              studentBookings.forEach(booking => { %>
+              <div class="booking-item">
+                <p>
+                  <strong>Student ID:</strong> <%=
+                  booking.student_id.toUpperCase() %>
+                </p>
+                <p><strong>Resource Name:</strong> <%= booking.resource_name %></p>
+                <p><strong>Booked Date:</strong> <%= booking.request_date %></p>
+                <p><strong>Description:</strong> <%= booking.description %></p>
+              </div>
+              <% }) %> <% } else { %>
+              <p class="no-data">No student bookings found.</p>
+              <% } %>
+            </div>
+          </div>
+
+          <div class="faculty-wrapper">
+            <h2>Faculty Bookings</h2>
+            <div class="booking-items">
+              <% const facultyBookings = bookedDetails.filter(b =>
+              b.faculty_id); %> <% if (facultyBookings.length > 0) { %> <%
+              facultyBookings.forEach(booking => { %>
+
+              <div class="booking-item">
+                <p>
+                  <strong>Faculty ID:</strong> <%=
+                  booking.faculty_id.toUpperCase()%>
+                </p>
+                <p><strong>Resource Name:</strong> <%= booking.resource_name %></p>
+                <p><strong>Booked Date:</strong> <%= booking.request_date %></p>
+                <p><strong>Description:</strong> <%= booking.description %></p>
+              </div>
+
+              <% }) %> <% } else { %>
+              <p class="no-data">No faculty bookings found.</p>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </sl-tab-panel>
+      <sl-tab-panel name="advanced"
+        >This is the advanced tab panel.</sl-tab-panel
+      >
+      <sl-tab-panel name="disabled">This is a disabled tab panel.</sl-tab-panel>
+    </sl-tab-group>
+    <!-- <div id="profile-info"></div> -->
+
+    <script src="/adminDashboard.js"></script>
+    <script>
+      const container = document.querySelector(".details-group-example");
+      async function handleReqInfo(element) {
+        const stdId = element.getAttribute("data-stdid");
+        document.querySelectorAll("sl-popup").forEach((popup) => {
+          popup.removeAttribute("active");
+        });
+        const popup = element.closest("sl-popup");
+        if (!popup.hasAttribute("active")) {
+          popup.setAttribute("active", "");
+        }
+
+        const reqBox = popup.querySelector(".request-info-box");
+        console.log("this area is called");
+
+        await loadReqInfo(stdId, reqBox);
+      }
+      function closePopup(element) {
+        const popup = element.closest("sl-popup");
+        if (popup.hasAttribute("active")) {
+          popup.removeAttribute("active");
+        }
+      }
+
+      // Close all other details when one is shown
+      container.addEventListener("sl-show", (event) => {
+        if (event.target.localName === "sl-details") {
+          [...container.querySelectorAll("sl-details")].map(
+            (details) => (details.open = event.target === details)
+          );
+        }
+      });
+    </script>
+  </body>
+</html>
